@@ -94,7 +94,8 @@ if(in_array('tm', $array5)) {
     echo "Letter not found!<br>";
 }
 
-
+// resource
+// https://www.php.net/manual/en/ref.array.php
 
    
 
