@@ -1,0 +1,47 @@
+ob_start() is a PHP function that turns on output
+buffering. Output buffering allows you to store the 
+output of PHP code in memory before sending it to the
+browser. This can be useful for a number of reasons, 
+such as : 
+
+ <> Allowing you to modify the output before sending 
+ it to the browser
+
+ <> Improving performence by reducing the number of 
+ HTTP requests made by the browser
+
+ <> Enabling you to send headers after output has already
+ been sent(using 'ob_start' and 'ob_flush()' )
+
+ here's an example: 
+
+<?php 
+  ob_start();
+
+  // output some content
+  echo "Hello, world!";
+
+  // store the output in a variable 
+  $output = ob_get_contents();
+
+  // clean the output buffer
+  ob_end_clean
+
+  // modify the output
+  $output = str_replace("World", "PHP", $output);
+
+  // send the modfied output to the browser 
+  echo $output;
+
+?>
+
+In this example, 'ob_start' is called at the beginning 
+of the PHP script to turn on output buffering. The script
+then outputs "Hello, World" using 'echo', but instead of 
+sending the output directly to the browser, it stores it 
+in a variable using 'ob_get_contents()'. The output buffer
+is then cleaned using 'ob_end_clean()'. The script then
+modifies the output by replacing "world" with "PHP" using 
+'str_replace()', and finally sends the modified output 
+to the browser using 'echo'
+
