@@ -43,3 +43,41 @@ $_SERVER['PHP_SELF'] exploits can be avoided by using the htmlspecialchars() fun
 ```php
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["php"]); ?>">
 ```
+
+## Validate Form Data with PHP 
+
+The first thing we will do is to pass all variables through PHP'S htmlspecialchars() function. 
+
+when we use the htmlspecialchars() function; then if a user tries to submit the sollowing in a text field: 
+
+```javascript
+<script>location.href('http://www.hacked.com')</script>
+````
+- this would not be executed, because it would be saved as HTML escaped code like this: 
+
+```txt
+&lt;script&gt;location.href('http://www.hacked.com')&lt;/script&gt;
+````
+The code is now safe to be displayed ona page orinside an e-mail. 
+
+We will also do two more things when the user submits the form: 
+
+ - Strip unnecessary characters(Extra space, tab, newline) from the user input data (with the PHP trim() function)
+ - Remove backslashes(\) from the user input data (with the PHP stripslashes() function)
+
+ The next step is to create a function that will do all the checking for us (which is musch more convenient than writing the same code over and over again).
+
+ ```php 
+  function check_input($data) {
+    // remove unnecessary spaces, newline
+    $data = trim($data);
+    // remove backslashes(\)
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+
+    return $data;
+  }
+
+ ```
+
+
