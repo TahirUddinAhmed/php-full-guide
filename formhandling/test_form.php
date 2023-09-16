@@ -1,4 +1,6 @@
 <?php
+// define all the input variable as empty
+$name = $email = $website = $comment = $gender = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
   // get the all input values
@@ -7,8 +9,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   $website = test_input($_POST['website']);
   $comment = test_input($_POST['comment']);
   $gender = test_input($_POST['gender']);
-
-  echo $gender;
 }
 
 function test_input($input) {
@@ -80,7 +80,21 @@ function test_input($input) {
       <input type="submit" value="submit">
     </form>
   </div>
-    
+
+  <h2>Your Input: </h2>
+  <?php 
+    echo "Name : " . $name;
+    echo "<br>";
+    echo "email : " . $email;
+    echo "<br>";
+    echo "website : " . $website;
+    echo "<br>";
+    echo "comment : " . $comment;
+    echo "<br>";
+    echo "gender : " . $gender;
+    echo "<br>";
+
+  ?>  
 </body>
 
 </html>
