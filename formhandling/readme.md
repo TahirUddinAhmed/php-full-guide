@@ -80,4 +80,19 @@ We will also do two more things when the user submits the form:
 
  ```
 
+ ## PHP Forms - Required Fields
+
+ In this stage we are submitted the form and print the result. Now We have to check whether all the fields all filled or not. 
+
+To achieve this goal we have to create some variables to our code 
+
+```php
+$nameErr, $emailErr, $genderErr, $websiteErr
+```
+
+$comment field is optional. 
+
+We have to add if else statement for each $_POST variable. This check if the $_POST variable is empty (With the PHP empty() function). If it is empty, an error message is stored in the different error variables, and if it is not empty it sends the user input data through the test_input() function: 
+
+
 

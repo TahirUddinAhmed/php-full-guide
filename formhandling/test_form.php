@@ -1,14 +1,48 @@
 <?php
 // define all the input variable as empty
-$name = $email = $website = $comment = $gender = "";
+$name = $email = $website = $comment = $gender = $username = "";
+$nameErr = $emailErr = $websiteErr = $genderErr = $usernameErr= "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
   // get the all input values
-  $name = test_input($_POST["name"]);
-  $email = test_input($_POST['email']);
-  $website = test_input($_POST['website']);
+  if(empty($_POST['name'])) {
+    $nameErr = "Name is Required!";
+  } else {
+    $name = test_input($_POST["name"]);
+  }
+
+  if(empty($_POST['email'])) {
+    $emailErr = "Email is required!";
+  } else {
+    $email = test_input($_POST['email']);
+  }
+
+  if(empty($_POST['website'])) {
+    $websiteErr = "Website is required!";
+  } else {
+    $website = test_input($_POST['website']);
+  }
+
+  if(empty($_POST['gender'])) {
+    $genderErr = "gender is required";
+  } else {
+    $gender = test_input($_POST['gender']);
+  }
+
+  // username
+  if(empty($_POST['username'])) {
+    $usernameErr = "Username is required!";
+  } else {
+    $username = test_input($_POST['username']);
+
+    if(!preg_match('/^[a-zA-Z0-9_]+$/', $username)) {
+      $usernameErr = "white space are not allowed!, you can user userscore";
+    }
+  }
+
   $comment = test_input($_POST['comment']);
-  $gender = test_input($_POST['gender']);
+
+
 }
 
 function test_input($input) {
@@ -36,6 +70,10 @@ function test_input($input) {
       .error-msg {
         color: red;
         padding: 4px 2px;
+      }
+      .err {
+        color: red;
+        padding: 2px;
       }
       .container {
         display: flex;
@@ -69,14 +107,21 @@ function test_input($input) {
   <p class="error-msg"></p>
   <div class="container">
   <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-      Name: <input type="text" name="name" placeholder="enter your name"><br>
-      email: <input type="email" name="email" placeholder="enter your emil"><br>
-      website: <input type="text" name="website" placeholder="enter your website"><br>
+      Name: <input type="text" name="name" placeholder="enter your name">
+      <span class="err"><?php echo $nameErr ?></span>
+      <br>
+      email: <input type="email" name="email" placeholder="enter your email">
+      <span class="err"><?php echo $emailErr ?></span><br>
+      username: <input type="text" name="username" placeholder="enter your username">
+      <span class="err"><?php echo $usernameErr ?></span><br>
+      website: <input type="text" name="website" placeholder="enter your website">
+      <span class="err"><?php echo $websiteErr ?></span><br>
       comment: <input type="text" name="comment" placeholder="enter your comment"><br>
       Gender: 
       <input type="radio" name="gender" value="female">female
       <input type="radio" name="gender" value="male">Male
       <input type="radio" name="gender" value="other">other
+      <span class="err"><?php echo $genderErr ?></span>
       <input type="submit" value="submit">
     </form>
   </div>
