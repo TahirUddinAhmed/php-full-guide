@@ -135,4 +135,116 @@ foreach($age as $key => $value) {
 }
 ```
 
+## Multi-dimensional Array
+A multidimensional array is an array containing one or more arrays.
+
+PHP supports multidimensional arrays that are two, three, four, five, or more levels deep. However, arrays more than three levels deep are hard to manage for most people. 
+
+<pre>
+The dimension of an array indicates the number of indices you need to select an element. 
+
+ - For a two-dimensional array you need two indices to select an element. 
+ - For a three-dimensional array you need three indices to select an element. 
+</pre>
+
+### PHP - Two-dimensional arrays. 
+A two-dimensional array is an array of arrays ( a three-dimensional array is an array of array of arrays).
+
+e.g: 
+```php
+$cars = array(
+    array("Volvo", 22, 18),
+    array("BMW", 15, 13),
+    array("TATA", 5, 2),
+    array("Land Rover", 17, 15)
+)
+```
+## PHP - Sorting array
+PHP - Sort functions for arrays
+
+ - sort() - sort arrays in ascending order.
+ - rsort() - sort arrays in descending order.
+ - asort() - sort associative arrays in ascending order, according to the value
+ - ksort() - sort associative arrays in ascending order, according to the key
+ - arsort() - sort associative arrays in descending order, according to the value
+ - ksort() - sort associative arrays in descending order, according to the key
+
+
+
+## PHP - Array ( Delete element )
+### Delete elements from the last 
+```
+array_pop();
+```
+
+e.g: 
+```php
+$nums = [12, 4, 45, 9, 71, 14];
+array_pop($nums); // last element is delete which is 14
+```
+### Delete element from an specified position 
+
+```
+unset();
+```
+
+e.g: 
+
+```php
+
+unset($nums[2]); // delete element at position 2
+
+```
+
+### Delete element from the first item
+
+```
+array_shift();
+```
+e.g: 
+
+```php
+array_shift($nums); // first element is being deleted which is 12
+```
+
+## PHP - add element to an array
+
+### PUSH elements to the end of the array
+
+let the array is 
+
+```php
+ $languages = ['PHP', 'JAVA', 'C'];
+
+ // add a new language the end of the array
+ $language[] = 'CPP';
+
+ // ['PHP', 'JAVA', 'C', 'CPP'];
+
+```
+
+Another way we can push an element to an array is using the array_push() method
+
+```php
+array_push($language, 'Python', 'Mojo🔥', 'React');
+
+// Now the array is 
+// ['PHP', 'JAVA', 'C', 'CPP', 'Python', 'Mojo🔥', 'React'];
+```
+
+### Check if an element is exist in an array or not
+
+```
+array_key_exists(key, arrays);
+```
+e.g: 
+```php
+$age = [
+    'peter' => 19,
+    'Tahir' => 20,
+    'John' => 30
+];
+
+$ans = array_key_exists('Tahir', $age);
+```
 
