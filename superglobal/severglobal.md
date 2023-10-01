@@ -80,3 +80,5 @@ Here are some common elements of $_SERVER with examples:
 // Output: en-US,en;q=0.9,fr;q=0.8
 
  ```
+
+ 11. $_SERVER['SCRIPT_URI']: Return the URI of the current page. 

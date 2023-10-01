@@ -45,6 +45,11 @@ echo $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 echo "<br><br>"; // new line
 
 
+echo "SERVER - SCRIPT_URI: <br>";
+echo $_SERVER['SCRIPT_URI']; 
+echo "<br><br>"; // new line
+
+
 
 
 
