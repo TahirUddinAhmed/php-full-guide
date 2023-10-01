@@ -27,3 +27,16 @@
 
 
  echo $paymentStatusDispay;
+
+ $httpCode = 404;
+
+ $message = match($httpCode) {
+  200, 201, 204 => "Success",
+  301, 302 => "Redirection",
+    400, 401, 403 => "Client error",
+    404 => "Not found",
+    500 => "Server Error",
+    default => "Unknown status code" 
+ };
+
+ echo "HTTP code $httpCode: $message";
